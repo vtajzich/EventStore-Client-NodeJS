@@ -7,7 +7,7 @@ import {
 } from "../..";
 
 describe("createPersistentSubscription", () => {
-  const node = createTestNode();
+  const node = createTestNode(3);
   let client!: EventStoreDBClient;
 
   beforeAll(async () => {
@@ -15,7 +15,7 @@ describe("createPersistentSubscription", () => {
 
     client = new EventStoreDBClient(
       {
-        endpoint: node.uri,
+        endpoints: node.endpoints
       },
       { rootCertificate: node.rootCertificate },
       { username: "admin", password: "changeit" }
